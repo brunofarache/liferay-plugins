@@ -53,6 +53,14 @@ public class PushNotificationsEntryLocalServiceUtil {
 		return getService().addPushNotificationsEntry(pushNotificationsEntry);
 	}
 
+	public static com.liferay.pushnotifications.model.PushNotificationsEntry addPushNotificationsEntry(
+		long userId, long parentPushNotificationsEntryId,
+		com.liferay.portal.kernel.json.JSONObject payload) {
+		return getService()
+				   .addPushNotificationsEntry(userId,
+			parentPushNotificationsEntryId, payload);
+	}
+
 	/**
 	* Creates a new push notifications entry with the primary key. Does not add the push notifications entry to the database.
 	*

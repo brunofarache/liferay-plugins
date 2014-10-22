@@ -59,6 +59,10 @@ public interface PushNotificationsEntryLocalService extends BaseLocalService,
 	public com.liferay.pushnotifications.model.PushNotificationsEntry addPushNotificationsEntry(
 		com.liferay.pushnotifications.model.PushNotificationsEntry pushNotificationsEntry);
 
+	public com.liferay.pushnotifications.model.PushNotificationsEntry addPushNotificationsEntry(
+		long userId, long parentPushNotificationsEntryId,
+		com.liferay.portal.kernel.json.JSONObject payload);
+
 	/**
 	* Creates a new push notifications entry with the primary key. Does not add the push notifications entry to the database.
 	*

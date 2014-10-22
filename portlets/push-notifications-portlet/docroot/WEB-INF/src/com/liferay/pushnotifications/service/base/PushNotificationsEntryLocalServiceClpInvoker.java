@@ -127,15 +127,21 @@ public class PushNotificationsEntryLocalServiceClpInvoker {
 
 		_methodParameterTypes50 = new String[] { "java.lang.String" };
 
-		_methodName55 = "sendPushNotification";
+		_methodName55 = "addPushNotificationsEntry";
 
 		_methodParameterTypes55 = new String[] {
-				"com.liferay.portal.kernel.json.JSONObject", "int", "int"
+				"long", "long", "com.liferay.portal.kernel.json.JSONObject"
 			};
 
 		_methodName56 = "sendPushNotification";
 
 		_methodParameterTypes56 = new String[] {
+				"com.liferay.portal.kernel.json.JSONObject", "int", "int"
+			};
+
+		_methodName57 = "sendPushNotification";
+
+		_methodParameterTypes57 = new String[] {
 				"long", "com.liferay.portal.kernel.json.JSONObject", "int",
 				"int"
 			};
@@ -254,6 +260,13 @@ public class PushNotificationsEntryLocalServiceClpInvoker {
 
 		if (_methodName55.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
+			return PushNotificationsEntryLocalServiceUtil.addPushNotificationsEntry(((Long)arguments[0]).longValue(),
+				((Long)arguments[1]).longValue(),
+				(com.liferay.portal.kernel.json.JSONObject)arguments[2]);
+		}
+
+		if (_methodName56.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
 			PushNotificationsEntryLocalServiceUtil.sendPushNotification((com.liferay.portal.kernel.json.JSONObject)arguments[0],
 				((Integer)arguments[1]).intValue(),
 				((Integer)arguments[2]).intValue());
@@ -261,8 +274,8 @@ public class PushNotificationsEntryLocalServiceClpInvoker {
 			return null;
 		}
 
-		if (_methodName56.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes56, parameterTypes)) {
+		if (_methodName57.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes57, parameterTypes)) {
 			PushNotificationsEntryLocalServiceUtil.sendPushNotification(((Long)arguments[0]).longValue(),
 				(com.liferay.portal.kernel.json.JSONObject)arguments[1],
 				((Integer)arguments[2]).intValue(),
@@ -318,4 +331,6 @@ public class PushNotificationsEntryLocalServiceClpInvoker {
 	private String[] _methodParameterTypes55;
 	private String _methodName56;
 	private String[] _methodParameterTypes56;
+	private String _methodName57;
+	private String[] _methodParameterTypes57;
 }
