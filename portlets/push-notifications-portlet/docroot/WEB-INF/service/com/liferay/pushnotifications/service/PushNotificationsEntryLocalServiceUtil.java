@@ -245,6 +245,18 @@ public class PushNotificationsEntryLocalServiceUtil {
 		return getService().invokeMethod(name, parameterTypes, arguments);
 	}
 
+	public static void sendPushNotification(
+		com.liferay.portal.kernel.json.JSONObject jsonObject, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		getService().sendPushNotification(jsonObject, start, end);
+	}
+
+	public static void sendPushNotification(long toUserId,
+		com.liferay.portal.kernel.json.JSONObject jsonObject, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		getService().sendPushNotification(toUserId, jsonObject, start, end);
+	}
+
 	/**
 	* Sets the Spring bean ID for this bean.
 	*

@@ -258,6 +258,22 @@ public class PushNotificationsEntryLocalServiceWrapper
 			parameterTypes, arguments);
 	}
 
+	@Override
+	public void sendPushNotification(
+		com.liferay.portal.kernel.json.JSONObject jsonObject, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_pushNotificationsEntryLocalService.sendPushNotification(jsonObject,
+			start, end);
+	}
+
+	@Override
+	public void sendPushNotification(long toUserId,
+		com.liferay.portal.kernel.json.JSONObject jsonObject, int start, int end)
+		throws com.liferay.portal.kernel.exception.PortalException {
+		_pushNotificationsEntryLocalService.sendPushNotification(toUserId,
+			jsonObject, start, end);
+	}
+
 	/**
 	* Sets the Spring bean ID for this bean.
 	*
