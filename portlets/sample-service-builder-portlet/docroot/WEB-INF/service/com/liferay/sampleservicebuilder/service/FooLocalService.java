@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.search.IndexableType;
@@ -36,6 +38,7 @@ import com.liferay.portal.service.PersistedModelLocalService;
  * @see com.liferay.sampleservicebuilder.service.impl.FooLocalServiceImpl
  * @generated
  */
+@ProviderType
 @Transactional(isolation = Isolation.PORTAL, rollbackFor =  {
 	PortalException.class, SystemException.class})
 public interface FooLocalService extends BaseLocalService, InvokableLocalService,
@@ -45,7 +48,8 @@ public interface FooLocalService extends BaseLocalService, InvokableLocalService
 	 *
 	 * Never modify or reference this interface directly. Always use {@link FooLocalServiceUtil} to access the foo local service. Add custom service methods to {@link com.liferay.sampleservicebuilder.service.impl.FooLocalServiceImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
-	public void addFoo(java.lang.String field1, boolean field2, int field3,
+	public com.liferay.sampleservicebuilder.model.Foo addFoo(
+		java.lang.String field1, boolean field2, int field3,
 		java.util.Date field4, java.lang.String field5,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException;
@@ -143,20 +147,20 @@ public interface FooLocalService extends BaseLocalService, InvokableLocalService
 		com.liferay.portal.kernel.util.OrderByComparator<T> orderByComparator);
 
 	/**
-	* Returns the number of rows that match the dynamic query.
+	* Returns the number of rows matching the dynamic query.
 	*
 	* @param dynamicQuery the dynamic query
-	* @return the number of rows that match the dynamic query
+	* @return the number of rows matching the dynamic query
 	*/
 	public long dynamicQueryCount(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery);
 
 	/**
-	* Returns the number of rows that match the dynamic query.
+	* Returns the number of rows matching the dynamic query.
 	*
 	* @param dynamicQuery the dynamic query
 	* @param projection the projection to apply to the query
-	* @return the number of rows that match the dynamic query
+	* @return the number of rows matching the dynamic query
 	*/
 	public long dynamicQueryCount(
 		com.liferay.portal.kernel.dao.orm.DynamicQuery dynamicQuery,
@@ -238,10 +242,27 @@ public interface FooLocalService extends BaseLocalService, InvokableLocalService
 		int start, int end,
 		com.liferay.portal.kernel.util.OrderByComparator<com.liferay.sampleservicebuilder.model.Foo> obc);
 
+	/**
+	* Returns all the foos matching the UUID and company.
+	*
+	* @param uuid the UUID of the foos
+	* @param companyId the primary key of the company
+	* @return the matching foos, or an empty list if no matches were found
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.sampleservicebuilder.model.Foo> getFoosByUuidAndCompanyId(
 		java.lang.String uuid, long companyId);
 
+	/**
+	* Returns a range of foos matching the UUID and company.
+	*
+	* @param uuid the UUID of the foos
+	* @param companyId the primary key of the company
+	* @param start the lower bound of the range of foos
+	* @param end the upper bound of the range of foos (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the range of matching foos, or an empty list if no matches were found
+	*/
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.sampleservicebuilder.model.Foo> getFoosByUuidAndCompanyId(
 		java.lang.String uuid, long companyId, int start, int end,

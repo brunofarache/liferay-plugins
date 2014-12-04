@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service.persistence;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.service.persistence.BasePersistence;
 
 import com.liferay.sampleservicebuilder.model.Foo;
@@ -30,6 +32,7 @@ import com.liferay.sampleservicebuilder.model.Foo;
  * @see FooUtil
  * @generated
  */
+@ProviderType
 public interface FooPersistence extends BasePersistence<Foo> {
 	/*
 	 * NOTE FOR DEVELOPERS:

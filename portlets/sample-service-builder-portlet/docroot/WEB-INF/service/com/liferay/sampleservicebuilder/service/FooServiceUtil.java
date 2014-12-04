@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.bean.PortletBeanLocatorUtil;
 import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.service.InvokableService;
@@ -32,6 +34,7 @@ import com.liferay.portal.service.InvokableService;
  * @see com.liferay.sampleservicebuilder.service.impl.FooServiceImpl
  * @generated
  */
+@ProviderType
 public class FooServiceUtil {
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -46,6 +49,11 @@ public class FooServiceUtil {
 	*/
 	public static java.lang.String getBeanIdentifier() {
 		return getService().getBeanIdentifier();
+	}
+
+	public static com.liferay.sampleservicebuilder.model.Foo getFoo()
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return getService().getFoo();
 	}
 
 	public static com.liferay.portal.model.User getUser(long userId)

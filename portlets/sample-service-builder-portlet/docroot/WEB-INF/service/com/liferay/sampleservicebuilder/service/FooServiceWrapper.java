@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.service.ServiceWrapper;
 
 /**
@@ -23,6 +25,7 @@ import com.liferay.portal.service.ServiceWrapper;
  * @see FooService
  * @generated
  */
+@ProviderType
 public class FooServiceWrapper implements FooService,
 	ServiceWrapper<FooService> {
 	public FooServiceWrapper(FooService fooService) {
@@ -37,6 +40,12 @@ public class FooServiceWrapper implements FooService,
 	@Override
 	public java.lang.String getBeanIdentifier() {
 		return _fooService.getBeanIdentifier();
+	}
+
+	@Override
+	public com.liferay.sampleservicebuilder.model.Foo getFoo()
+		throws com.liferay.portal.kernel.exception.PortalException {
+		return _fooService.getFoo();
 	}
 
 	@Override

@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service.http;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
@@ -61,6 +63,7 @@ import java.rmi.RemoteException;
  * @see com.liferay.sampleservicebuilder.service.FooServiceUtil
  * @generated
  */
+@ProviderType
 public class FooServiceSoap {
 	public static com.liferay.portal.model.User getUser(long userId)
 		throws RemoteException {
@@ -82,6 +85,20 @@ public class FooServiceSoap {
 			java.util.List<com.liferay.portal.model.Group> returnValue = FooServiceUtil.getUserSitesGroups();
 
 			return com.liferay.portal.model.GroupSoap.toSoapModels(returnValue);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
+	public static com.liferay.sampleservicebuilder.model.FooSoap getFoo()
+		throws RemoteException {
+		try {
+			com.liferay.sampleservicebuilder.model.Foo returnValue = FooServiceUtil.getFoo();
+
+			return com.liferay.sampleservicebuilder.model.FooSoap.toSoapModel(returnValue);
 		}
 		catch (Exception e) {
 			_log.error(e, e);

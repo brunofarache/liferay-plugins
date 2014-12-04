@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.model.impl;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.sampleservicebuilder.model.Foo;
 import com.liferay.sampleservicebuilder.service.FooLocalServiceUtil;
 
@@ -29,6 +31,7 @@ import com.liferay.sampleservicebuilder.service.FooLocalServiceUtil;
  * @see com.liferay.sampleservicebuilder.model.Foo
  * @generated
  */
+@ProviderType
 public abstract class FooBaseImpl extends FooModelImpl implements Foo {
 	/*
 	 * NOTE FOR DEVELOPERS:

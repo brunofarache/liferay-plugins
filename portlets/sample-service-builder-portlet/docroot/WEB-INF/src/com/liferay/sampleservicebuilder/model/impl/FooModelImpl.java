@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.model.impl;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSON;
@@ -60,6 +62,7 @@ import java.util.Map;
  * @generated
  */
 @JSON(strict = true)
+@ProviderType
 public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
@@ -98,11 +101,11 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.com.liferay.sampleservicebuilder.model.Foo"),
 			true);
-	public static long COMPANYID_COLUMN_BITMASK = 1L;
-	public static long FIELD2_COLUMN_BITMASK = 2L;
-	public static long GROUPID_COLUMN_BITMASK = 4L;
-	public static long UUID_COLUMN_BITMASK = 8L;
-	public static long FIELD1_COLUMN_BITMASK = 16L;
+	public static final long COMPANYID_COLUMN_BITMASK = 1L;
+	public static final long FIELD2_COLUMN_BITMASK = 2L;
+	public static final long GROUPID_COLUMN_BITMASK = 4L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
+	public static final long FIELD1_COLUMN_BITMASK = 16L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -831,8 +834,10 @@ public class FooModelImpl extends BaseModelImpl<Foo> implements FooModel {
 		return sb.toString();
 	}
 
-	private static ClassLoader _classLoader = Foo.class.getClassLoader();
-	private static Class<?>[] _escapedModelInterfaces = new Class[] { Foo.class };
+	private static final ClassLoader _classLoader = Foo.class.getClassLoader();
+	private static final Class<?>[] _escapedModelInterfaces = new Class[] {
+			Foo.class
+		};
 	private String _uuid;
 	private String _originalUuid;
 	private long _fooId;

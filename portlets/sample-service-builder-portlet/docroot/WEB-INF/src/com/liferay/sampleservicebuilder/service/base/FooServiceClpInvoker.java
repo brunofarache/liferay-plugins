@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service.base;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.sampleservicebuilder.service.FooServiceUtil;
 
 import java.util.Arrays;
@@ -22,6 +24,7 @@ import java.util.Arrays;
  * @author Brian Wing Shun Chan
  * @generated
  */
+@ProviderType
 public class FooServiceClpInvoker {
 	public FooServiceClpInvoker() {
 		_methodName36 = "getBeanIdentifier";
@@ -39,6 +42,10 @@ public class FooServiceClpInvoker {
 		_methodName43 = "getUserSitesGroups";
 
 		_methodParameterTypes43 = new String[] {  };
+
+		_methodName44 = "getFoo";
+
+		_methodParameterTypes44 = new String[] {  };
 	}
 
 	public Object invokeMethod(String name, String[] parameterTypes,
@@ -65,6 +72,11 @@ public class FooServiceClpInvoker {
 			return FooServiceUtil.getUserSitesGroups();
 		}
 
+		if (_methodName44.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes44, parameterTypes)) {
+			return FooServiceUtil.getFoo();
+		}
+
 		throw new UnsupportedOperationException();
 	}
 
@@ -76,4 +88,6 @@ public class FooServiceClpInvoker {
 	private String[] _methodParameterTypes42;
 	private String _methodName43;
 	private String[] _methodParameterTypes43;
+	private String _methodName44;
+	private String[] _methodParameterTypes44;
 }

@@ -14,12 +14,15 @@
 
 package com.liferay.sampleservicebuilder.service;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.service.InvokableLocalService;
 
 /**
  * @author Brian Wing Shun Chan
  * @generated
  */
+@ProviderType
 public class FooLocalServiceClp implements FooLocalService {
 	public FooLocalServiceClp(InvokableLocalService invokableLocalService) {
 		_invokableLocalService = invokableLocalService;
@@ -188,26 +191,29 @@ public class FooLocalServiceClp implements FooLocalService {
 	}
 
 	@Override
-	public void addFoo(java.lang.String field1, boolean field2, int field3,
+	public com.liferay.sampleservicebuilder.model.Foo addFoo(
+		java.lang.String field1, boolean field2, int field3,
 		java.util.Date field4, java.lang.String field5,
 		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException {
+		Object returnObj = null;
+
 		try {
-			_invokableLocalService.invokeMethod(_methodName0,
-				_methodParameterTypes0,
-				new Object[] {
-					ClpSerializer.translateInput(field1),
-					
-				field2,
-					
-				field3,
-					
-				ClpSerializer.translateInput(field4),
-					
-				ClpSerializer.translateInput(field5),
-					
-				ClpSerializer.translateInput(serviceContext)
-				});
+			returnObj = _invokableLocalService.invokeMethod(_methodName0,
+					_methodParameterTypes0,
+					new Object[] {
+						ClpSerializer.translateInput(field1),
+						
+					field2,
+						
+					field3,
+						
+					ClpSerializer.translateInput(field4),
+						
+					ClpSerializer.translateInput(field5),
+						
+					ClpSerializer.translateInput(serviceContext)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -224,6 +230,8 @@ public class FooLocalServiceClp implements FooLocalService {
 					" is not a valid exception");
 			}
 		}
+
+		return (com.liferay.sampleservicebuilder.model.Foo)ClpSerializer.translateOutput(returnObj);
 	}
 
 	@Override

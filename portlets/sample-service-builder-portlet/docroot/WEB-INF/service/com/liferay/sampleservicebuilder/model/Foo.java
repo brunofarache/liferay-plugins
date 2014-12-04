@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.model;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.model.PersistedModel;
 
 /**
@@ -25,10 +27,15 @@ import com.liferay.portal.model.PersistedModel;
  * @see com.liferay.sampleservicebuilder.model.impl.FooModelImpl
  * @generated
  */
+@ProviderType
 public interface Foo extends FooModel, PersistedModel {
 	/*
 	 * NOTE FOR DEVELOPERS:
 	 *
 	 * Never modify this interface directly. Add methods to {@link com.liferay.sampleservicebuilder.model.impl.FooImpl} and rerun ServiceBuilder to automatically copy the method declarations to this interface.
 	 */
+	public void setBar(com.liferay.sampleservicebuilder.Bar bar);
+
+	@com.liferay.portal.kernel.json.JSON()
+	public com.liferay.sampleservicebuilder.Bar getBar();
 }

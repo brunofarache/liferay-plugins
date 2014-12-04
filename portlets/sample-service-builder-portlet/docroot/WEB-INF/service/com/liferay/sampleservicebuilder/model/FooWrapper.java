@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.model;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.lar.StagedModelType;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
@@ -31,6 +33,7 @@ import java.util.Map;
  * @see Foo
  * @generated
  */
+@ProviderType
 public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	public FooWrapper(Foo foo) {
 		_foo = foo;
@@ -156,6 +159,11 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	@Override
 	public int compareTo(com.liferay.sampleservicebuilder.model.Foo foo) {
 		return _foo.compareTo(foo);
+	}
+
+	@Override
+	public com.liferay.sampleservicebuilder.Bar getBar() {
+		return _foo.getBar();
 	}
 
 	/**
@@ -351,6 +359,11 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 	@Override
 	public void persist() {
 		_foo.persist();
+	}
+
+	@Override
+	public void setBar(com.liferay.sampleservicebuilder.Bar bar) {
+		_foo.setBar(bar);
 	}
 
 	@Override
@@ -613,5 +626,5 @@ public class FooWrapper implements Foo, ModelWrapper<Foo> {
 		_foo.resetOriginalValues();
 	}
 
-	private Foo _foo;
+	private final Foo _foo;
 }

@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service.base;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.sampleservicebuilder.service.FooLocalServiceUtil;
 
 import java.util.Arrays;
@@ -22,6 +24,7 @@ import java.util.Arrays;
  * @author Brian Wing Shun Chan
  * @generated
  */
+@ProviderType
 public class FooLocalServiceClpInvoker {
 	public FooLocalServiceClpInvoker() {
 		_methodName0 = "addFoo";
@@ -342,13 +345,11 @@ public class FooLocalServiceClpInvoker {
 
 		if (_methodName66.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes66, parameterTypes)) {
-			FooLocalServiceUtil.addFoo((java.lang.String)arguments[0],
+			return FooLocalServiceUtil.addFoo((java.lang.String)arguments[0],
 				((Boolean)arguments[1]).booleanValue(),
 				((Integer)arguments[2]).intValue(),
 				(java.util.Date)arguments[3], (java.lang.String)arguments[4],
 				(com.liferay.portal.service.ServiceContext)arguments[5]);
-
-			return null;
 		}
 
 		if (_methodName67.equals(name) &&

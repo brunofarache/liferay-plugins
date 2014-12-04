@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.model;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.lar.StagedModelType;
@@ -41,6 +43,7 @@ import java.util.Map;
 /**
  * @author Brian Wing Shun Chan
  */
+@ProviderType
 public class FooClp extends BaseModelImpl<Foo> implements Foo {
 	public FooClp() {
 	}
@@ -500,6 +503,43 @@ public class FooClp extends BaseModelImpl<Foo> implements Foo {
 			catch (Exception e) {
 				throw new UnsupportedOperationException(e);
 			}
+		}
+	}
+
+	@Override
+	public void setBar(com.liferay.sampleservicebuilder.Bar bar) {
+		try {
+			String methodName = "setBar";
+
+			Class<?>[] parameterTypes = new Class<?>[] {
+					com.liferay.sampleservicebuilder.Bar.class
+				};
+
+			Object[] parameterValues = new Object[] { bar };
+
+			invokeOnRemoteModel(methodName, parameterTypes, parameterValues);
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
+		}
+	}
+
+	@Override
+	public com.liferay.sampleservicebuilder.Bar getBar() {
+		try {
+			String methodName = "getBar";
+
+			Class<?>[] parameterTypes = new Class<?>[] {  };
+
+			Object[] parameterValues = new Object[] {  };
+
+			com.liferay.sampleservicebuilder.Bar returnObj = (com.liferay.sampleservicebuilder.Bar)invokeOnRemoteModel(methodName,
+					parameterTypes, parameterValues);
+
+			return returnObj;
+		}
+		catch (Exception e) {
+			throw new UnsupportedOperationException(e);
 		}
 	}
 

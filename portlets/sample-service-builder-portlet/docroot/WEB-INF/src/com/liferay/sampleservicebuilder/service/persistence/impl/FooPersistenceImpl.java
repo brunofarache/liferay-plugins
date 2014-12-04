@@ -14,6 +14,8 @@
 
 package com.liferay.sampleservicebuilder.service.persistence.impl;
 
+import aQute.bnd.annotation.ProviderType;
+
 import com.liferay.portal.kernel.cache.CacheRegistryUtil;
 import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
@@ -64,6 +66,7 @@ import java.util.Set;
  * @see FooUtil
  * @generated
  */
+@ProviderType
 public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	implements FooPersistence {
 	/*
@@ -2621,11 +2624,11 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 	private static final String _NO_SUCH_ENTITY_WITH_KEY = "No Foo exists with the key {";
 	private static final boolean _HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE = GetterUtil.getBoolean(PropsUtil.get(
 				PropsKeys.HIBERNATE_CACHE_USE_SECOND_LEVEL_CACHE));
-	private static Log _log = LogFactoryUtil.getLog(FooPersistenceImpl.class);
-	private static Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
+	private static final Log _log = LogFactoryUtil.getLog(FooPersistenceImpl.class);
+	private static final Set<String> _badColumnNames = SetUtil.fromArray(new String[] {
 				"uuid"
 			});
-	private static Foo _nullFoo = new FooImpl() {
+	private static final Foo _nullFoo = new FooImpl() {
 			@Override
 			public Object clone() {
 				return this;
@@ -2637,7 +2640,7 @@ public class FooPersistenceImpl extends BasePersistenceImpl<Foo>
 			}
 		};
 
-	private static CacheModel<Foo> _nullFooCacheModel = new CacheModel<Foo>() {
+	private static final CacheModel<Foo> _nullFooCacheModel = new CacheModel<Foo>() {
 			@Override
 			public Foo toEntityModel() {
 				return _nullFoo;
