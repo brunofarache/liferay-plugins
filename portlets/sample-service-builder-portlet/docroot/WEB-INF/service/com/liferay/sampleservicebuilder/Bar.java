@@ -12,28 +12,25 @@
  * details.
  */
 
-package com.liferay.sampleservicebuilder.model.impl;
-
-import com.liferay.sampleservicebuilder.Bar;
-import com.liferay.portal.kernel.json.JSON;
+package com.liferay.sampleservicebuilder;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Bruno Farache
  */
-public class FooImpl extends FooBaseImpl {
+public class Bar {
 
-	public FooImpl() {
+	public Bar() {
+		setName("Igor");
 	}
 
-	public void setBar(Bar bar) {
-		_bar = bar;
+	public String getName() {
+		return _name;
 	}
 
-	@JSON
-	public Bar getBar() {
-		return _bar;
+	public void setName(String name) {
+		_name = name;
 	}
 
-	private Bar _bar;
+	private String _name;
 
 }

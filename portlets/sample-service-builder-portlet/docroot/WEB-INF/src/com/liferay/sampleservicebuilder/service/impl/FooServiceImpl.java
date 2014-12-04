@@ -19,8 +19,12 @@ import com.liferay.portal.model.Group;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.GroupServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
+import com.liferay.sampleservicebuilder.model.Foo;
+import com.liferay.sampleservicebuilder.model.impl.FooImpl;
 import com.liferay.sampleservicebuilder.service.base.FooServiceBaseImpl;
+import com.liferay.portal.service.ServiceContext;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,6 +38,10 @@ public class FooServiceImpl extends FooServiceBaseImpl {
 
 	public List<Group> getUserSitesGroups() throws PortalException {
 		return GroupServiceUtil.getUserSitesGroups();
+	}
+
+	public Foo getFoo() throws PortalException {
+		return fooLocalService.addFoo("field1", true, 0, new Date(), "field5", new ServiceContext());
 	}
 
 }

@@ -25,6 +25,8 @@ import com.liferay.sampleservicebuilder.model.Foo;
 import com.liferay.sampleservicebuilder.service.base.FooLocalServiceBaseImpl;
 import com.liferay.sampleservicebuilder.util.LocalObject;
 
+import com.liferay.sampleservicebuilder.Bar;
+
 import java.util.Date;
 import java.util.List;
 
@@ -33,14 +35,13 @@ import java.util.List;
  */
 public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 
-	public void addFoo(
+	public Foo addFoo(
 			String field1, boolean field2, int field3, Date field4,
 			String field5, ServiceContext serviceContext)
 		throws PortalException {
 
 		// Foo
 
-		User user = userLocalService.getUserById(serviceContext.getUserId());
 		long groupId = serviceContext.getScopeGroupId();
 		Date now = new Date();
 
@@ -49,9 +50,9 @@ public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 		Foo foo = fooPersistence.create(fooId);
 
 		foo.setGroupId(groupId);
-		foo.setCompanyId(user.getCompanyId());
-		foo.setUserId(user.getUserId());
-		foo.setUserName(user.getFullName());
+		foo.setCompanyId(1);
+		foo.setUserId(1);
+		foo.setUserName("user name");
 		foo.setCreateDate(serviceContext.getCreateDate(now));
 		foo.setModifiedDate(serviceContext.getModifiedDate(now));
 		foo.setField1(field1);
@@ -61,13 +62,11 @@ public class FooLocalServiceImpl extends FooLocalServiceBaseImpl {
 		foo.setField5(field5);
 		foo.setExpandoBridgeAttributes(serviceContext);
 
+		foo.setBar(new Bar());
+
 		fooPersistence.update(foo);
 
-		// Asset
-
-		updateAsset(
-			user.getUserId(), foo, serviceContext.getAssetCategoryIds(),
-			serviceContext.getAssetTagNames());
+		return foo;
 	}
 
 	@Override
