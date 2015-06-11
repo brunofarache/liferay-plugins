@@ -86,6 +86,9 @@ OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getP
 				<liferay-ui:search-container-column-text name="fullname" value='<%= ""+userToken.getFullName() %>' />
 				<liferay-ui:search-container-column-text name="screenname" value="<%= userToken.getScreenName() %>" />
 				<liferay-ui:search-container-column-text name="platform" orderable="<%= true %>" orderableProperty="platform" value="<%= device.getPlatform() %>" />
+				<liferay-ui:search-container-column-text name="model" orderable="<%= true %>" orderableProperty="model" value="<%= device.getModel() %>" />
+				<liferay-ui:search-container-column-text name="osversion" orderable="<%= true %>" orderableProperty="OSVersion" value="<%= device.getOSVersion() %>" />
+				<liferay-ui:search-container-column-text name="appversion" orderable="<%= true %>" orderableProperty="appVersion" value="<%= device.getAppVersion() %>" />
 			</liferay-ui:search-container-row>
 
 			<liferay-ui:search-iterator/>
