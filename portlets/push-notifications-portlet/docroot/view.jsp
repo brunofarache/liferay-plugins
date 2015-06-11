@@ -46,7 +46,7 @@ OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getP
 
 <liferay-portlet:actionURL name="updatePortletPreferences" var="updatePortletPreferencesURL" />
 
-<liferay-ui:tabs value="<%= currentTab %>" param="currentTab" url="<%= portletURL.toString() %>" names="configuration,devices,test">
+<liferay-ui:tabs names="configuration,devices,test" param="currentTab" url="<%= portletURL.toString() %>" value="<%= currentTab %>">
 	<liferay-ui:section>
 		<aui:form action="<%= updatePortletPreferencesURL %>" method="post" name="configurationFm">
 			<aui:fieldset label="android">
@@ -74,10 +74,12 @@ OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getP
 		</aui:form>
 	</liferay-ui:section>
 	<liferay-ui:section>
-		<liferay-ui:search-container emptyResultsMessage="no-devices-were-found" delta="10" iteratorURL="<%= portletURL %>" orderByCol="<%= orderByCol %>" orderByComparator="<%= orderByComparator %>" orderByType="<%= orderByType %>" total="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevicesCount() %>">
+		<liferay-ui:success key="success" message="device-deleted-successfully" />
+		<liferay-ui:search-container delta="10" emptyResultsMessage="no-devices-were-found" iteratorURL="<%= portletURL %>" orderByCol="<%= orderByCol %>" orderByComparator="<%= orderByComparator %>" orderByType="<%= orderByType %>" total="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevicesCount() %>">
 			<liferay-ui:search-container-results results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>" />
 
 			<liferay-ui:search-container-row className="com.liferay.pushnotifications.model.PushNotificationsDevice" keyProperty="pushNotificationsDeviceId" modelVar="device">
+
 				<%
 				User userToken = UserLocalServiceUtil.getUser(device.getUserId());
 				%>
@@ -86,6 +88,7 @@ OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getP
 				<liferay-ui:search-container-column-text name="fullname" value='<%= ""+userToken.getFullName() %>' />
 				<liferay-ui:search-container-column-text name="screenname" value="<%= userToken.getScreenName() %>" />
 				<liferay-ui:search-container-column-text name="platform" orderable="<%= true %>" orderableProperty="platform" value="<%= device.getPlatform() %>" />
+				<liferay-ui:search-container-column-jsp align="right" path="/devices_action.jsp" />
 			</liferay-ui:search-container-row>
 
 			<liferay-ui:search-iterator/>
