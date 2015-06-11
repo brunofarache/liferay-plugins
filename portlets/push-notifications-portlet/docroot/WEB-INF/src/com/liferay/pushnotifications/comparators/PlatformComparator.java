@@ -27,32 +27,36 @@ public class PlatformComparator extends OrderByComparator {
 
 	public static String ORDER_BY_DESC = "platform DESC";
 
-	public PlatformComparator(boolean asc) {
-		_ascending = asc;
+	public PlatformComparator(boolean ascending) {
+		_ascending = ascending;
 	}
 
 	@Override
-	public int compare(Object arg0, Object arg1) {
-		PushNotificationsDevice dev1 = (PushNotificationsDevice)arg0;
-		PushNotificationsDevice dev2 = (PushNotificationsDevice)arg1;
+	public int compare(Object object1, Object object2) {
+		if (object1 == object2) {
+			return 0;
+		}
+
+		PushNotificationsDevice dev1 = (PushNotificationsDevice) object1;
+		PushNotificationsDevice dev2 = (PushNotificationsDevice) object2;
 
 		int result = dev1.getPlatform().compareToIgnoreCase(dev2.getPlatform());
-		return (_ascending)?result:(-1)*result;
+		
+		if (_ascending) {
+			return result;
+		}
+
+		return -result;
 	}
 
 	@Override
 	public String getOrderBy() {
 		if (_ascending) {
 			return ORDER_BY_ASC;
-		} else {
-			return ORDER_BY_DESC;
 		}
-	}
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 1L;
+		return ORDER_BY_DESC;
+	}
 
 	private boolean _ascending;
 
