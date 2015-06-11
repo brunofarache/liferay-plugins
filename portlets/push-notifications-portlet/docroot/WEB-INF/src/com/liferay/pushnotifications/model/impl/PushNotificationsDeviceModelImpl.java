@@ -74,9 +74,12 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 			{ "userId", Types.BIGINT },
 			{ "createDate", Types.TIMESTAMP },
 			{ "platform", Types.VARCHAR },
-			{ "token", Types.VARCHAR }
+			{ "token", Types.VARCHAR },
+			{ "model", Types.VARCHAR },
+			{ "OSVersion", Types.VARCHAR },
+			{ "appVersion", Types.VARCHAR }
 		};
-	public static final String TABLE_SQL_CREATE = "create table PushNotificationsDevice (pushNotificationsDeviceId LONG not null primary key,userId LONG,createDate DATE null,platform VARCHAR(75) null,token STRING null)";
+	public static final String TABLE_SQL_CREATE = "create table PushNotificationsDevice (pushNotificationsDeviceId LONG not null primary key,userId LONG,createDate DATE null,platform VARCHAR(75) null,token STRING null,model VARCHAR(75) null,OSVersion VARCHAR(75) null,appVersion VARCHAR(75) null)";
 	public static final String TABLE_SQL_DROP = "drop table PushNotificationsDevice";
 	public static final String ORDER_BY_JPQL = " ORDER BY pushNotificationsDevice.pushNotificationsDeviceId ASC";
 	public static final String ORDER_BY_SQL = " ORDER BY PushNotificationsDevice.pushNotificationsDeviceId ASC";
@@ -92,10 +95,12 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 	public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
 				"value.object.column.bitmask.enabled.com.liferay.pushnotifications.model.PushNotificationsDevice"),
 			true);
-	public static final long PLATFORM_COLUMN_BITMASK = 1L;
-	public static final long TOKEN_COLUMN_BITMASK = 2L;
-	public static final long USERID_COLUMN_BITMASK = 4L;
-	public static final long PUSHNOTIFICATIONSDEVICEID_COLUMN_BITMASK = 8L;
+	public static final long OSVERSION_COLUMN_BITMASK = 1L;
+	public static final long APPVERSION_COLUMN_BITMASK = 2L;
+	public static final long PLATFORM_COLUMN_BITMASK = 4L;
+	public static final long TOKEN_COLUMN_BITMASK = 8L;
+	public static final long USERID_COLUMN_BITMASK = 16L;
+	public static final long PUSHNOTIFICATIONSDEVICEID_COLUMN_BITMASK = 32L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -116,6 +121,9 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 		model.setCreateDate(soapModel.getCreateDate());
 		model.setPlatform(soapModel.getPlatform());
 		model.setToken(soapModel.getToken());
+		model.setModel(soapModel.getModel());
+		model.setOSVersion(soapModel.getOSVersion());
+		model.setAppVersion(soapModel.getAppVersion());
 
 		return model;
 	}
@@ -187,6 +195,9 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 		attributes.put("createDate", getCreateDate());
 		attributes.put("platform", getPlatform());
 		attributes.put("token", getToken());
+		attributes.put("model", getModel());
+		attributes.put("OSVersion", getOSVersion());
+		attributes.put("appVersion", getAppVersion());
 
 		attributes.put("entityCacheEnabled", isEntityCacheEnabled());
 		attributes.put("finderCacheEnabled", isFinderCacheEnabled());
@@ -225,6 +236,24 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 
 		if (token != null) {
 			setToken(token);
+		}
+
+		String model = (String)attributes.get("model");
+
+		if (model != null) {
+			setModel(model);
+		}
+
+		String OSVersion = (String)attributes.get("OSVersion");
+
+		if (OSVersion != null) {
+			setOSVersion(OSVersion);
+		}
+
+		String appVersion = (String)attributes.get("appVersion");
+
+		if (appVersion != null) {
+			setAppVersion(appVersion);
 		}
 	}
 
@@ -341,6 +370,74 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 		return GetterUtil.getString(_originalToken);
 	}
 
+	@JSON
+	@Override
+	public String getModel() {
+		if (_model == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _model;
+		}
+	}
+
+	@Override
+	public void setModel(String model) {
+		_model = model;
+	}
+
+	@JSON
+	@Override
+	public String getOSVersion() {
+		if (_OSVersion == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _OSVersion;
+		}
+	}
+
+	@Override
+	public void setOSVersion(String OSVersion) {
+		_columnBitmask |= OSVERSION_COLUMN_BITMASK;
+
+		if (_originalOSVersion == null) {
+			_originalOSVersion = _OSVersion;
+		}
+
+		_OSVersion = OSVersion;
+	}
+
+	public String getOriginalOSVersion() {
+		return GetterUtil.getString(_originalOSVersion);
+	}
+
+	@JSON
+	@Override
+	public String getAppVersion() {
+		if (_appVersion == null) {
+			return StringPool.BLANK;
+		}
+		else {
+			return _appVersion;
+		}
+	}
+
+	@Override
+	public void setAppVersion(String appVersion) {
+		_columnBitmask |= APPVERSION_COLUMN_BITMASK;
+
+		if (_originalAppVersion == null) {
+			_originalAppVersion = _appVersion;
+		}
+
+		_appVersion = appVersion;
+	}
+
+	public String getOriginalAppVersion() {
+		return GetterUtil.getString(_originalAppVersion);
+	}
+
 	public long getColumnBitmask() {
 		return _columnBitmask;
 	}
@@ -377,6 +474,9 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 		pushNotificationsDeviceImpl.setCreateDate(getCreateDate());
 		pushNotificationsDeviceImpl.setPlatform(getPlatform());
 		pushNotificationsDeviceImpl.setToken(getToken());
+		pushNotificationsDeviceImpl.setModel(getModel());
+		pushNotificationsDeviceImpl.setOSVersion(getOSVersion());
+		pushNotificationsDeviceImpl.setAppVersion(getAppVersion());
 
 		pushNotificationsDeviceImpl.resetOriginalValues();
 
@@ -447,6 +547,10 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 
 		pushNotificationsDeviceModelImpl._originalToken = pushNotificationsDeviceModelImpl._token;
 
+		pushNotificationsDeviceModelImpl._originalOSVersion = pushNotificationsDeviceModelImpl._OSVersion;
+
+		pushNotificationsDeviceModelImpl._originalAppVersion = pushNotificationsDeviceModelImpl._appVersion;
+
 		pushNotificationsDeviceModelImpl._columnBitmask = 0;
 	}
 
@@ -483,12 +587,36 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 			pushNotificationsDeviceCacheModel.token = null;
 		}
 
+		pushNotificationsDeviceCacheModel.model = getModel();
+
+		String model = pushNotificationsDeviceCacheModel.model;
+
+		if ((model != null) && (model.length() == 0)) {
+			pushNotificationsDeviceCacheModel.model = null;
+		}
+
+		pushNotificationsDeviceCacheModel.OSVersion = getOSVersion();
+
+		String OSVersion = pushNotificationsDeviceCacheModel.OSVersion;
+
+		if ((OSVersion != null) && (OSVersion.length() == 0)) {
+			pushNotificationsDeviceCacheModel.OSVersion = null;
+		}
+
+		pushNotificationsDeviceCacheModel.appVersion = getAppVersion();
+
+		String appVersion = pushNotificationsDeviceCacheModel.appVersion;
+
+		if ((appVersion != null) && (appVersion.length() == 0)) {
+			pushNotificationsDeviceCacheModel.appVersion = null;
+		}
+
 		return pushNotificationsDeviceCacheModel;
 	}
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{pushNotificationsDeviceId=");
 		sb.append(getPushNotificationsDeviceId());
@@ -500,6 +628,12 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 		sb.append(getPlatform());
 		sb.append(", token=");
 		sb.append(getToken());
+		sb.append(", model=");
+		sb.append(getModel());
+		sb.append(", OSVersion=");
+		sb.append(getOSVersion());
+		sb.append(", appVersion=");
+		sb.append(getAppVersion());
 		sb.append("}");
 
 		return sb.toString();
@@ -507,7 +641,7 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 
 	@Override
 	public String toXmlString() {
-		StringBundler sb = new StringBundler(19);
+		StringBundler sb = new StringBundler(28);
 
 		sb.append("<model><model-name>");
 		sb.append("com.liferay.pushnotifications.model.PushNotificationsDevice");
@@ -533,6 +667,18 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 			"<column><column-name>token</column-name><column-value><![CDATA[");
 		sb.append(getToken());
 		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>model</column-name><column-value><![CDATA[");
+		sb.append(getModel());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>OSVersion</column-name><column-value><![CDATA[");
+		sb.append(getOSVersion());
+		sb.append("]]></column-value></column>");
+		sb.append(
+			"<column><column-name>appVersion</column-name><column-value><![CDATA[");
+		sb.append(getAppVersion());
+		sb.append("]]></column-value></column>");
 
 		sb.append("</model>");
 
@@ -552,6 +698,11 @@ public class PushNotificationsDeviceModelImpl extends BaseModelImpl<PushNotifica
 	private String _originalPlatform;
 	private String _token;
 	private String _originalToken;
+	private String _model;
+	private String _OSVersion;
+	private String _originalOSVersion;
+	private String _appVersion;
+	private String _originalAppVersion;
 	private long _columnBitmask;
 	private PushNotificationsDevice _escapedModel;
 }

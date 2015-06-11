@@ -53,6 +53,15 @@ public class PushNotificationsDeviceLocalServiceWrapper
 			platform, token);
 	}
 
+	@Override
+	public com.liferay.pushnotifications.model.PushNotificationsDevice addPushNotificationsDevice(
+		long userId, java.lang.String platform, java.lang.String token,
+		java.lang.String model, java.lang.String version,
+		java.lang.String appVersion) {
+		return _pushNotificationsDeviceLocalService.addPushNotificationsDevice(userId,
+			platform, token, model, version, appVersion);
+	}
+
 	/**
 	* Creates a new push notifications device with the primary key. Does not add the push notifications device to the database.
 	*

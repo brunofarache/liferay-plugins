@@ -133,29 +133,36 @@ public class PushNotificationsDeviceLocalServiceClpInvoker {
 				"long", "java.lang.String", "java.lang.String"
 			};
 
-		_methodName50 = "deletePushNotificationsDevice";
+		_methodName50 = "addPushNotificationsDevice";
 
-		_methodParameterTypes50 = new String[] { "java.lang.String" };
+		_methodParameterTypes50 = new String[] {
+				"long", "java.lang.String", "java.lang.String",
+				"java.lang.String", "java.lang.String", "java.lang.String"
+			};
 
-		_methodName51 = "getPushNotificationsDeviceByComparator";
+		_methodName51 = "deletePushNotificationsDevice";
 
-		_methodParameterTypes51 = new String[] {
+		_methodParameterTypes51 = new String[] { "java.lang.String" };
+
+		_methodName52 = "getPushNotificationsDeviceByComparator";
+
+		_methodParameterTypes52 = new String[] {
 				"int", "int", "com.liferay.portal.kernel.util.OrderByComparator"
 			};
 
-		_methodName52 = "resetPushNotificationSenders";
+		_methodName53 = "resetPushNotificationSenders";
 
-		_methodParameterTypes52 = new String[] {  };
-
-		_methodName53 = "sendPushNotification";
-
-		_methodParameterTypes53 = new String[] {
-				"long[][]", "com.liferay.portal.kernel.json.JSONObject"
-			};
+		_methodParameterTypes53 = new String[] {  };
 
 		_methodName54 = "sendPushNotification";
 
 		_methodParameterTypes54 = new String[] {
+				"long[][]", "com.liferay.portal.kernel.json.JSONObject"
+			};
+
+		_methodName55 = "sendPushNotification";
+
+		_methodParameterTypes55 = new String[] {
 				"java.lang.String", "java.util.List",
 				"com.liferay.portal.kernel.json.JSONObject"
 			};
@@ -280,33 +287,41 @@ public class PushNotificationsDeviceLocalServiceClpInvoker {
 
 		if (_methodName50.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
-			return PushNotificationsDeviceLocalServiceUtil.deletePushNotificationsDevice((java.lang.String)arguments[0]);
+			return PushNotificationsDeviceLocalServiceUtil.addPushNotificationsDevice(((Long)arguments[0]).longValue(),
+				(java.lang.String)arguments[1], (java.lang.String)arguments[2],
+				(java.lang.String)arguments[3], (java.lang.String)arguments[4],
+				(java.lang.String)arguments[5]);
 		}
 
 		if (_methodName51.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
+			return PushNotificationsDeviceLocalServiceUtil.deletePushNotificationsDevice((java.lang.String)arguments[0]);
+		}
+
+		if (_methodName52.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
 			return PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[2]);
 		}
 
-		if (_methodName52.equals(name) &&
-				Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
-			PushNotificationsDeviceLocalServiceUtil.resetPushNotificationSenders();
-
-			return null;
-		}
-
 		if (_methodName53.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes53, parameterTypes)) {
-			PushNotificationsDeviceLocalServiceUtil.sendPushNotification((long[])arguments[0],
-				(com.liferay.portal.kernel.json.JSONObject)arguments[1]);
+			PushNotificationsDeviceLocalServiceUtil.resetPushNotificationSenders();
 
 			return null;
 		}
 
 		if (_methodName54.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes54, parameterTypes)) {
+			PushNotificationsDeviceLocalServiceUtil.sendPushNotification((long[])arguments[0],
+				(com.liferay.portal.kernel.json.JSONObject)arguments[1]);
+
+			return null;
+		}
+
+		if (_methodName55.equals(name) &&
+				Arrays.deepEquals(_methodParameterTypes55, parameterTypes)) {
 			PushNotificationsDeviceLocalServiceUtil.sendPushNotification((java.lang.String)arguments[0],
 				(java.util.List<java.lang.String>)arguments[1],
 				(com.liferay.portal.kernel.json.JSONObject)arguments[2]);
@@ -369,4 +384,6 @@ public class PushNotificationsDeviceLocalServiceClpInvoker {
 	private String[] _methodParameterTypes53;
 	private String _methodName54;
 	private String[] _methodParameterTypes54;
+	private String _methodName55;
+	private String[] _methodParameterTypes55;
 }

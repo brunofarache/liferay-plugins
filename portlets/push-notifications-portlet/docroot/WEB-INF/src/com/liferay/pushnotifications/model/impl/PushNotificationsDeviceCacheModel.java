@@ -66,7 +66,7 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(11);
+		StringBundler sb = new StringBundler(17);
 
 		sb.append("{pushNotificationsDeviceId=");
 		sb.append(pushNotificationsDeviceId);
@@ -78,6 +78,12 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 		sb.append(platform);
 		sb.append(", token=");
 		sb.append(token);
+		sb.append(", model=");
+		sb.append(model);
+		sb.append(", OSVersion=");
+		sb.append(OSVersion);
+		sb.append(", appVersion=");
+		sb.append(appVersion);
 		sb.append("}");
 
 		return sb.toString();
@@ -111,6 +117,27 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 			pushNotificationsDeviceImpl.setToken(token);
 		}
 
+		if (model == null) {
+			pushNotificationsDeviceImpl.setModel(StringPool.BLANK);
+		}
+		else {
+			pushNotificationsDeviceImpl.setModel(model);
+		}
+
+		if (OSVersion == null) {
+			pushNotificationsDeviceImpl.setOSVersion(StringPool.BLANK);
+		}
+		else {
+			pushNotificationsDeviceImpl.setOSVersion(OSVersion);
+		}
+
+		if (appVersion == null) {
+			pushNotificationsDeviceImpl.setAppVersion(StringPool.BLANK);
+		}
+		else {
+			pushNotificationsDeviceImpl.setAppVersion(appVersion);
+		}
+
 		pushNotificationsDeviceImpl.resetOriginalValues();
 
 		return pushNotificationsDeviceImpl;
@@ -123,6 +150,9 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 		createDate = objectInput.readLong();
 		platform = objectInput.readUTF();
 		token = objectInput.readUTF();
+		model = objectInput.readUTF();
+		OSVersion = objectInput.readUTF();
+		appVersion = objectInput.readUTF();
 	}
 
 	@Override
@@ -145,6 +175,27 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 		else {
 			objectOutput.writeUTF(token);
 		}
+
+		if (model == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(model);
+		}
+
+		if (OSVersion == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(OSVersion);
+		}
+
+		if (appVersion == null) {
+			objectOutput.writeUTF(StringPool.BLANK);
+		}
+		else {
+			objectOutput.writeUTF(appVersion);
+		}
 	}
 
 	public long pushNotificationsDeviceId;
@@ -152,4 +203,7 @@ public class PushNotificationsDeviceCacheModel implements CacheModel<PushNotific
 	public long createDate;
 	public String platform;
 	public String token;
+	public String model;
+	public String OSVersion;
+	public String appVersion;
 }

@@ -62,6 +62,11 @@ public interface PushNotificationsDeviceLocalService extends BaseLocalService,
 	public com.liferay.pushnotifications.model.PushNotificationsDevice addPushNotificationsDevice(
 		long userId, java.lang.String platform, java.lang.String token);
 
+	public com.liferay.pushnotifications.model.PushNotificationsDevice addPushNotificationsDevice(
+		long userId, java.lang.String platform, java.lang.String token,
+		java.lang.String model, java.lang.String version,
+		java.lang.String appVersion);
+
 	/**
 	* Creates a new push notifications device with the primary key. Does not add the push notifications device to the database.
 	*
