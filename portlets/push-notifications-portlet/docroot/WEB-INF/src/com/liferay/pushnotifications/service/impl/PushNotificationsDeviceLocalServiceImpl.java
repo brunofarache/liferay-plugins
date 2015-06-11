@@ -42,6 +42,14 @@ public class PushNotificationsDeviceLocalServiceImpl
 	public PushNotificationsDevice addPushNotificationsDevice(
 		long userId, String platform, String token) {
 
+		return addPushNotificationsDevice(userId, platform, token, "", "", "");
+	}
+
+	@Override
+	public PushNotificationsDevice addPushNotificationsDevice(
+		long userId, String platform, String token, String model,
+		String version, String appVersion) {
+
 		long pushNotificationsDeviceId = counterLocalService.increment();
 
 		PushNotificationsDevice pushNotificationsDevice =
@@ -52,6 +60,9 @@ public class PushNotificationsDeviceLocalServiceImpl
 		pushNotificationsDevice.setCreateDate(new Date());
 		pushNotificationsDevice.setPlatform(platform);
 		pushNotificationsDevice.setToken(token);
+		pushNotificationsDevice.setModel(model);
+		pushNotificationsDevice.setOSVersion(version);
+		pushNotificationsDevice.setAppVersion(appVersion);
 
 		pushNotificationsDevicePersistence.update(pushNotificationsDevice);
 

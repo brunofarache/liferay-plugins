@@ -40,6 +40,16 @@ public class PushNotificationsDeviceServiceImpl
 			String token, String platform)
 		throws PortalException {
 
+		return addPushNotificationsDevice(token, platform, "", "", "");
+	}
+
+	@AccessControlled(guestAccessEnabled = true)
+	@Override
+	public PushNotificationsDevice addPushNotificationsDevice(
+			String token, String platform, String model, String osVersion,
+			String appVersion)
+		throws PortalException {
+
 		PushNotificationsPermission.check(
 			getPermissionChecker(), ActionKeys.MANAGE_DEVICES);
 
@@ -49,7 +59,8 @@ public class PushNotificationsDeviceServiceImpl
 		if (pushNotificationsDevice == null) {
 			pushNotificationsDevice =
 				pushNotificationsDeviceLocalService.addPushNotificationsDevice(
-					getGuestOrUserId(), platform, token);
+					getGuestOrUserId(), platform, token, model, osVersion,
+					appVersion);
 		}
 		else {
 			long userId = getGuestOrUserId();
