@@ -13,8 +13,19 @@
  * details.
  */
 --%>
+<%@ page import="com.liferay.portal.kernel.util.OrderByComparator" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.PrefsPropsUtil" %>
+<%@ page import="com.liferay.portal.model.User" %>
+<%@ page import="com.liferay.portal.service.UserLocalServiceUtil" %>
+<%@ page import="com.liferay.pushnotifications.service.PushNotificationsDeviceLocalServiceUtil" %>
+<%@ page import="com.liferay.pushnotifications.util.PortletPropsKeys" %>
+<%@ page import="com.liferay.pushnotifications.util.PortletPropsValues" %>
+<%@ page import="com.liferay.pushnotifications.util.PushNotificationsDeviceComparatorUtil" %>
 
-<%@ include file="/init.jsp" %>
+<%@ page import="javax.portlet.PortletURL" %>
+
+<%@ include file="init.jsp" %>
 
 <%
 String androidApiKey = PrefsPropsUtil.getString(PortletPropsKeys.ANDROID_API_KEY, PortletPropsValues.ANDROID_API_KEY);
@@ -22,14 +33,20 @@ int androidRetries = PrefsPropsUtil.getInteger(PortletPropsKeys.ANDROID_RETRIES,
 String appleCertificatePassword = PrefsPropsUtil.getString(PortletPropsKeys.APPLE_CERTIFICATE_PASSWORD, PortletPropsValues.APPLE_CERTIFICATE_PASSWORD);
 String appleCertificatePath = PrefsPropsUtil.getString(PortletPropsKeys.APPLE_CERTIFICATE_PATH, PortletPropsValues.APPLE_CERTIFICATE_PATH);
 boolean appleSandbox = PrefsPropsUtil.getBoolean(PortletPropsKeys.APPLE_SANDBOX, PortletPropsValues.APPLE_SANDBOX);
+
+String currentTab = ParamUtil.getString(request, "currentTab", "configuration");
+
+PortletURL portletURL = renderResponse.createRenderURL();
+portletURL.setParameter("currentTab", currentTab);
+
+String orderByCol = ParamUtil.getString(request, "orderByCol", "platform");
+String orderByType = ParamUtil.getString(request, "orderByType", "ASC");
+OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getPushNotificationOrderByComparator(orderByCol, orderByType);
 %>
 
 <liferay-portlet:actionURL name="updatePortletPreferences" var="updatePortletPreferencesURL" />
 
-<liferay-ui:tabs
-	names="configuration,test"
-	refresh="<%= false %>"
->
+<liferay-ui:tabs value="<%= currentTab %>" param="currentTab" url="<%= portletURL.toString() %>" names="configuration,devices,test">
 	<liferay-ui:section>
 		<aui:form action="<%= updatePortletPreferencesURL %>" method="post" name="configurationFm">
 			<aui:fieldset label="android">
@@ -56,7 +73,24 @@ boolean appleSandbox = PrefsPropsUtil.getBoolean(PortletPropsKeys.APPLE_SANDBOX,
 			</aui:button-row>
 		</aui:form>
 	</liferay-ui:section>
+	<liferay-ui:section>
+		<liferay-ui:search-container emptyResultsMessage="no-devices-were-found" delta="10" iteratorURL="<%= portletURL %>" orderByCol="<%= orderByCol %>" orderByComparator="<%= orderByComparator %>" orderByType="<%= orderByType %>" total="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevicesCount() %>">
+			<liferay-ui:search-container-results results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>" />
 
+			<liferay-ui:search-container-row className="com.liferay.pushnotifications.model.PushNotificationsDevice" keyProperty="pushNotificationsDeviceId" modelVar="device">
+				<%
+				User userToken = UserLocalServiceUtil.getUser(device.getUserId());
+				%>
+
+				<liferay-ui:search-container-column-text name="userid" value='<%= ""+userToken.getUserId() %>' />
+				<liferay-ui:search-container-column-text name="fullname" value='<%= ""+userToken.getFullName() %>' />
+				<liferay-ui:search-container-column-text name="screenname" value="<%= userToken.getScreenName() %>" />
+				<liferay-ui:search-container-column-text name="platform" orderable="<%= true %>" orderableProperty="platform" value="<%= device.getPlatform() %>" />
+			</liferay-ui:search-container-row>
+
+			<liferay-ui:search-iterator/>
+		</liferay-ui:search-container>
+	</liferay-ui:section>
 	<liferay-ui:section>
 		<aui:form name="fm">
 			<aui:input label="message" name="message" rows="6" type="textarea" />
