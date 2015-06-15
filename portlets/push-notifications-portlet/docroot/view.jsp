@@ -29,7 +29,7 @@ PortletURL portletURL = renderResponse.createRenderURL();
 portletURL.setParameter("currentTab", currentTab);
 
 String orderByCol = ParamUtil.getString(request, "orderByCol", "platform");
-String orderByType = ParamUtil.getString(request, "orderByType", "ASC");
+String orderByType = ParamUtil.getString(request, "orderByType", "asc");
 
 OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotificationsDeviceOrderByComparator(orderByCol, orderByType);
 %>
@@ -64,19 +64,47 @@ OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotifications
 		</aui:form>
 	</liferay-ui:section>
 	<liferay-ui:section>
-		<liferay-ui:search-container delta="10" emptyResultsMessage="no-devices-were-found" iteratorURL="<%= portletURL %>" orderByCol="<%= orderByCol %>" orderByComparator="<%= orderByComparator %>" orderByType="<%= orderByType %>" total="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevicesCount() %>">
-			<liferay-ui:search-container-results results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>" />
+		<liferay-ui:search-container
+			emptyResultsMessage="no-devices-were-found"
+			iteratorURL="<%= portletURL %>"
+			orderByCol="<%= orderByCol %>"
+			orderByComparator="<%= orderByComparator %>"
+			orderByType="<%= orderByType %>"
+			total="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevicesCount() %>"
+		>
 
-			<liferay-ui:search-container-row className="com.liferay.pushnotifications.model.PushNotificationsDevice" keyProperty="pushNotificationsDeviceId" modelVar="device">
+			<liferay-ui:search-container-results
+				results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>"
+			/>
+
+			<liferay-ui:search-container-row
+				className="com.liferay.pushnotifications.model.PushNotificationsDevice"
+				keyProperty="pushNotificationsDeviceId"
+				modelVar="device"
+			>
 
 				<%
 				User userToken = UserLocalServiceUtil.getUser(device.getUserId());
 				%>
 
-				<liferay-ui:search-container-column-text name="userid" value='<%= ""+userToken.getUserId() %>' />
-				<liferay-ui:search-container-column-text name="fullname" value='<%= ""+userToken.getFullName() %>' />
-				<liferay-ui:search-container-column-text name="screenname" value="<%= userToken.getScreenName() %>" />
-				<liferay-ui:search-container-column-text name="platform" orderable="<%= true %>" orderableProperty="platform" value="<%= device.getPlatform() %>" />
+				<liferay-ui:search-container-column-text
+					name="user-id"
+					value='<%= ""+userToken.getUserId() %>'
+				/>
+
+				<liferay-ui:search-container-column-text
+					name="full-name"
+					value='<%= ""+userToken.getFullName() %>' />
+
+				<liferay-ui:search-container-column-text
+					name="screen-name"
+					value="<%= userToken.getScreenName() %>" />
+
+				<liferay-ui:search-container-column-text
+					name="platform"
+					orderable="<%= true %>"
+					orderableProperty="platform"
+					value="<%= device.getPlatform() %>" />
 			</liferay-ui:search-container-row>
 
 			<liferay-ui:search-iterator/>
