@@ -37,11 +37,11 @@ public class PlatformComparator extends OrderByComparator {
 			return 0;
 		}
 
-		PushNotificationsDevice dev1 = (PushNotificationsDevice) object1;
-		PushNotificationsDevice dev2 = (PushNotificationsDevice) object2;
+		PushNotificationsDevice dev1 = (PushNotificationsDevice)object1;
+		PushNotificationsDevice dev2 = (PushNotificationsDevice)object2;
 
 		int result = dev1.getPlatform().compareToIgnoreCase(dev2.getPlatform());
-		
+
 		if (_ascending) {
 			return result;
 		}
