@@ -21,32 +21,39 @@ import com.liferay.pushnotifications.model.PushNotificationsDevice;
  * @author Javier Gamarra
  * @author Salva Tejero
  */
-public class PushNotificationsDevicePlatformComparator extends OrderByComparator {
+public class PushNotificationsDevicePlatformComparator
+	extends OrderByComparator<PushNotificationsDevice> {
 
 	public static String ORDER_BY_ASC = "platform ASC";
 
 	public static String ORDER_BY_DESC = "platform DESC";
+
+	public static final String[] ORDER_BY_FIELDS = {"platform"};
+
+	public PushNotificationsDevicePlatformComparator() {
+		this(true);
+	}
 
 	public PushNotificationsDevicePlatformComparator(boolean ascending) {
 		_ascending = ascending;
 	}
 
 	@Override
-	public int compare(Object object1, Object object2) {
-		if (object1 == object2) {
-			return 0;
-		}
+	public int compare(
+		PushNotificationsDevice pushNotificationsDevice1,
+		PushNotificationsDevice pushNotificationsDevice2) {
 
-		PushNotificationsDevice dev1 = (PushNotificationsDevice) object1;
-		PushNotificationsDevice dev2 = (PushNotificationsDevice) object2;
+		String platform1 = pushNotificationsDevice1.getPlatform();
+		String platform2 = pushNotificationsDevice2.getPlatform();
 
-		int result = dev1.getPlatform().compareToIgnoreCase(dev2.getPlatform());
-		
+		int value = platform1.compareToIgnoreCase(platform2);
+
 		if (_ascending) {
-			return result;
+			return value;
 		}
-
-		return -result;
+		else {
+			return -value;
+		}
 	}
 
 	@Override
@@ -54,8 +61,19 @@ public class PushNotificationsDevicePlatformComparator extends OrderByComparator
 		if (_ascending) {
 			return ORDER_BY_ASC;
 		}
+		else {
+			return ORDER_BY_DESC;
+		}
+	}
 
-		return ORDER_BY_DESC;
+	@Override
+	public String[] getOrderByFields() {
+		return ORDER_BY_FIELDS;
+	}
+
+	@Override
+	public boolean isAscending() {
+		return _ascending;
 	}
 
 	private boolean _ascending;
