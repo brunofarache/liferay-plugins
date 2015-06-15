@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.pushnotifications.comparators;
+package com.liferay.pushnotifications.util.comparator;
 
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.pushnotifications.model.PushNotificationsDevice;
@@ -21,13 +21,13 @@ import com.liferay.pushnotifications.model.PushNotificationsDevice;
  * @author Javier Gamarra
  * @author Salva Tejero
  */
-public class PlatformComparator extends OrderByComparator {
+public class PushNotificationsDevicePlatformComparator extends OrderByComparator {
 
 	public static String ORDER_BY_ASC = "platform ASC";
 
 	public static String ORDER_BY_DESC = "platform DESC";
 
-	public PlatformComparator(boolean ascending) {
+	public PushNotificationsDevicePlatformComparator(boolean ascending) {
 		_ascending = ascending;
 	}
 
