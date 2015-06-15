@@ -58,6 +58,15 @@ public class PushNotificationsDeviceLocalServiceUtil {
 		return getService().addPushNotificationsDevice(userId, platform, token);
 	}
 
+	public static com.liferay.pushnotifications.model.PushNotificationsDevice addPushNotificationsDevice(
+		long userId, java.lang.String platform, java.lang.String token,
+		java.lang.String model, java.lang.String version,
+		java.lang.String appVersion) {
+		return getService()
+				   .addPushNotificationsDevice(userId, platform, token, model,
+			version, appVersion);
+	}
+
 	/**
 	* Creates a new push notifications device with the primary key. Does not add the push notifications device to the database.
 	*
@@ -225,6 +234,14 @@ public class PushNotificationsDeviceLocalServiceUtil {
 		long pushNotificationsDeviceId)
 		throws com.liferay.portal.kernel.exception.PortalException {
 		return getService().getPushNotificationsDevice(pushNotificationsDeviceId);
+	}
+
+	public static java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDeviceByComparator(
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator) {
+		return getService()
+				   .getPushNotificationsDeviceByComparator(start, end,
+			orderByComparator);
 	}
 
 	/**

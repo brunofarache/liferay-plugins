@@ -60,6 +60,9 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 		attributes.put("createDate", getCreateDate());
 		attributes.put("platform", getPlatform());
 		attributes.put("token", getToken());
+		attributes.put("model", getModel());
+		attributes.put("OSVersion", getOSVersion());
+		attributes.put("appVersion", getAppVersion());
 
 		return attributes;
 	}
@@ -96,6 +99,24 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 		if (token != null) {
 			setToken(token);
 		}
+
+		String model = (String)attributes.get("model");
+
+		if (model != null) {
+			setModel(model);
+		}
+
+		String OSVersion = (String)attributes.get("OSVersion");
+
+		if (OSVersion != null) {
+			setOSVersion(OSVersion);
+		}
+
+		String appVersion = (String)attributes.get("appVersion");
+
+		if (appVersion != null) {
+			setAppVersion(appVersion);
+		}
 	}
 
 	@Override
@@ -107,6 +128,16 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 	public int compareTo(
 		com.liferay.pushnotifications.model.PushNotificationsDevice pushNotificationsDevice) {
 		return _pushNotificationsDevice.compareTo(pushNotificationsDevice);
+	}
+
+	/**
+	* Returns the app version of this push notifications device.
+	*
+	* @return the app version of this push notifications device
+	*/
+	@Override
+	public java.lang.String getAppVersion() {
+		return _pushNotificationsDevice.getAppVersion();
 	}
 
 	/**
@@ -122,6 +153,26 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 	@Override
 	public com.liferay.portlet.expando.model.ExpandoBridge getExpandoBridge() {
 		return _pushNotificationsDevice.getExpandoBridge();
+	}
+
+	/**
+	* Returns the model of this push notifications device.
+	*
+	* @return the model of this push notifications device
+	*/
+	@Override
+	public java.lang.String getModel() {
+		return _pushNotificationsDevice.getModel();
+	}
+
+	/**
+	* Returns the o s version of this push notifications device.
+	*
+	* @return the o s version of this push notifications device
+	*/
+	@Override
+	public java.lang.String getOSVersion() {
+		return _pushNotificationsDevice.getOSVersion();
 	}
 
 	/**
@@ -214,6 +265,16 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 		_pushNotificationsDevice.persist();
 	}
 
+	/**
+	* Sets the app version of this push notifications device.
+	*
+	* @param appVersion the app version of this push notifications device
+	*/
+	@Override
+	public void setAppVersion(java.lang.String appVersion) {
+		_pushNotificationsDevice.setAppVersion(appVersion);
+	}
+
 	@Override
 	public void setCachedModel(boolean cachedModel) {
 		_pushNotificationsDevice.setCachedModel(cachedModel);
@@ -247,9 +308,29 @@ public class PushNotificationsDeviceWrapper implements PushNotificationsDevice,
 		_pushNotificationsDevice.setExpandoBridgeAttributes(serviceContext);
 	}
 
+	/**
+	* Sets the model of this push notifications device.
+	*
+	* @param model the model of this push notifications device
+	*/
+	@Override
+	public void setModel(java.lang.String model) {
+		_pushNotificationsDevice.setModel(model);
+	}
+
 	@Override
 	public void setNew(boolean n) {
 		_pushNotificationsDevice.setNew(n);
+	}
+
+	/**
+	* Sets the o s version of this push notifications device.
+	*
+	* @param OSVersion the o s version of this push notifications device
+	*/
+	@Override
+	public void setOSVersion(java.lang.String OSVersion) {
+		_pushNotificationsDevice.setOSVersion(OSVersion);
 	}
 
 	/**

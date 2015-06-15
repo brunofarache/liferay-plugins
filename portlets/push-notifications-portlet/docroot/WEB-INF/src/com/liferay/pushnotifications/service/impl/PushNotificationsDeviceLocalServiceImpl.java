@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.json.JSONObject;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.pushnotifications.PushNotificationsException;
 import com.liferay.pushnotifications.model.PushNotificationsDevice;
 import com.liferay.pushnotifications.sender.PushNotificationsSender;
@@ -41,6 +42,14 @@ public class PushNotificationsDeviceLocalServiceImpl
 	public PushNotificationsDevice addPushNotificationsDevice(
 		long userId, String platform, String token) {
 
+		return addPushNotificationsDevice(userId, platform, token, "", "", "");
+	}
+
+	@Override
+	public PushNotificationsDevice addPushNotificationsDevice(
+		long userId, String platform, String token, String model,
+		String version, String appVersion) {
+
 		long pushNotificationsDeviceId = counterLocalService.increment();
 
 		PushNotificationsDevice pushNotificationsDevice =
@@ -51,6 +60,9 @@ public class PushNotificationsDeviceLocalServiceImpl
 		pushNotificationsDevice.setCreateDate(new Date());
 		pushNotificationsDevice.setPlatform(platform);
 		pushNotificationsDevice.setToken(token);
+		pushNotificationsDevice.setModel(model);
+		pushNotificationsDevice.setOSVersion(version);
+		pushNotificationsDevice.setAppVersion(appVersion);
 
 		pushNotificationsDevicePersistence.update(pushNotificationsDevice);
 
@@ -67,6 +79,13 @@ public class PushNotificationsDeviceLocalServiceImpl
 		pushNotificationsDevicePersistence.remove(pushNotificationsDevice);
 
 		return pushNotificationsDevice;
+	}
+
+	public List<PushNotificationsDevice> getPushNotificationsDeviceByComparator(
+		int start, int end, OrderByComparator orderByComparator) {
+
+		return pushNotificationsDevicePersistence.findAll(
+			start, end, orderByComparator);
 	}
 
 	@Override

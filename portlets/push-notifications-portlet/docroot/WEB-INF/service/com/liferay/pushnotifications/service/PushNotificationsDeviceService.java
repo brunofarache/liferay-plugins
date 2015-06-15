@@ -54,6 +54,12 @@ public interface PushNotificationsDeviceService extends BaseService,
 		throws PortalException;
 
 	@AccessControlled(guestAccessEnabled = true)
+	public com.liferay.pushnotifications.model.PushNotificationsDevice addPushNotificationsDevice(
+		java.lang.String token, java.lang.String platform,
+		java.lang.String model, java.lang.String osVersion,
+		java.lang.String appVersion) throws PortalException;
+
+	@AccessControlled(guestAccessEnabled = true)
 	public com.liferay.pushnotifications.model.PushNotificationsDevice deletePushNotificationsDevice(
 		java.lang.String token) throws PortalException;
 
