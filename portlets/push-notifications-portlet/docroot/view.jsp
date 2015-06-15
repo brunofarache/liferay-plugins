@@ -102,9 +102,7 @@ OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotifications
 
 				<liferay-ui:search-container-column-text
 					name="platform"
-					orderable="<%= true %>"
-					orderableProperty="platform"
-					value="<%= device.getPlatform() %>" />
+					orderable="<%= true %>" />
 			</liferay-ui:search-container-row>
 
 			<liferay-ui:search-iterator/>
