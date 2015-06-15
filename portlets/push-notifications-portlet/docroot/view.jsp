@@ -13,19 +13,8 @@
  * details.
  */
 --%>
-<%@ page import="com.liferay.portal.kernel.util.OrderByComparator" %>
-<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-<%@ page import="com.liferay.portal.kernel.util.PrefsPropsUtil" %>
-<%@ page import="com.liferay.portal.model.User" %>
-<%@ page import="com.liferay.portal.service.UserLocalServiceUtil" %>
-<%@ page import="com.liferay.pushnotifications.service.PushNotificationsDeviceLocalServiceUtil" %>
-<%@ page import="com.liferay.pushnotifications.util.PortletPropsKeys" %>
-<%@ page import="com.liferay.pushnotifications.util.PortletPropsValues" %>
-<%@ page import="com.liferay.pushnotifications.util.PushNotificationsDeviceComparatorUtil" %>
 
-<%@ page import="javax.portlet.PortletURL" %>
-
-<%@ include file="init.jsp" %>
+<%@ include file="/init.jsp" %>
 
 <%
 String androidApiKey = PrefsPropsUtil.getString(PortletPropsKeys.ANDROID_API_KEY, PortletPropsValues.ANDROID_API_KEY);
@@ -41,7 +30,8 @@ portletURL.setParameter("currentTab", currentTab);
 
 String orderByCol = ParamUtil.getString(request, "orderByCol", "platform");
 String orderByType = ParamUtil.getString(request, "orderByType", "ASC");
-OrderByComparator orderByComparator = PushNotificationsDeviceComparatorUtil.getPushNotificationOrderByComparator(orderByCol, orderByType);
+
+OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotificationsDeviceOrderByComparator(orderByCol, orderByType);
 %>
 
 <liferay-portlet:actionURL name="updatePortletPreferences" var="updatePortletPreferencesURL" />

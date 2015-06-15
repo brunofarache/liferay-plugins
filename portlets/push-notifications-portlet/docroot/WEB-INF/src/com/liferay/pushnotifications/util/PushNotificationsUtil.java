@@ -15,21 +15,28 @@
 package com.liferay.pushnotifications.util;
 
 import com.liferay.portal.kernel.util.OrderByComparator;
+import com.liferay.pushnotifications.model.PushNotificationsDevice;
 import com.liferay.pushnotifications.util.comparator.PushNotificationsDevicePlatformComparator;
-public class PushNotificationsDeviceComparatorUtil {
 
-	public static OrderByComparator getPushNotificationOrderByComparator(
-		String orderByCol, String orderByType) {
+/**
+ * @author Javier Gamarra
+ * @author Salva Tejero
+ */
+public class PushNotificationsUtil {
+
+	public static OrderByComparator<PushNotificationsDevice>
+			getPushNotificationsDeviceOrderByComparator(
+				String orderByCol, String orderByType) {
 
 		boolean orderByAsc = false;
 
-		if ("asc".equals(orderByType)) {
+		if (orderByType.equals("asc")) {
 			orderByAsc = true;
 		}
 
-		OrderByComparator orderByComparator = null;
+		OrderByComparator<PushNotificationsDevice> orderByComparator = null;
 
-		if ("platform".equals(orderByCol)) {
+		if (orderByCol.equals("platform")) {
 			orderByComparator = new PushNotificationsDevicePlatformComparator(
 				orderByAsc);
 		}
