@@ -97,8 +97,7 @@ OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotifications
 					value="<%= deviceUser.getFullName() %>" />
 
 				<liferay-ui:search-container-column-text
-					name="screen-name"
-					value="<%= deviceUser.getScreenName() %>" />
+					name="token" />
 
 				<liferay-ui:search-container-column-text
 					name="platform"
