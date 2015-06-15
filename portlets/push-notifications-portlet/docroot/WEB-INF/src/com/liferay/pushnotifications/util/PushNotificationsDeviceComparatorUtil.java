@@ -16,7 +16,6 @@ package com.liferay.pushnotifications.util;
 
 import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.pushnotifications.util.comparator.PushNotificationsDevicePlatformComparator;
-
 public class PushNotificationsDeviceComparatorUtil {
 
 	public static OrderByComparator getPushNotificationOrderByComparator(
@@ -31,7 +30,8 @@ public class PushNotificationsDeviceComparatorUtil {
 		OrderByComparator orderByComparator = null;
 
 		if ("platform".equals(orderByCol)) {
-			orderByComparator = new PushNotificationsDevicePlatformComparator(orderByAsc);
+			orderByComparator = new PushNotificationsDevicePlatformComparator(
+				orderByAsc);
 		}
 
 		return orderByComparator;
