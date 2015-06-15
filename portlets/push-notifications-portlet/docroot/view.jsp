@@ -84,21 +84,21 @@ OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotifications
 			>
 
 				<%
-				User userToken = UserLocalServiceUtil.getUser(device.getUserId());
+				User deviceUser = UserLocalServiceUtil.getUser(device.getUserId());
 				%>
 
 				<liferay-ui:search-container-column-text
 					name="user-id"
-					value='<%= ""+userToken.getUserId() %>'
+					value="<%= String.valueOf(deviceUser.getUserId()) %>"
 				/>
 
 				<liferay-ui:search-container-column-text
 					name="full-name"
-					value='<%= ""+userToken.getFullName() %>' />
+					value="<%= deviceUser.getFullName() %>" />
 
 				<liferay-ui:search-container-column-text
 					name="screen-name"
-					value="<%= userToken.getScreenName() %>" />
+					value="<%= deviceUser.getScreenName() %>" />
 
 				<liferay-ui:search-container-column-text
 					name="platform"
