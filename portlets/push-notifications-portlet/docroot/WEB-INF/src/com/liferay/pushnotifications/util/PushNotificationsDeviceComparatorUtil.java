@@ -19,6 +19,10 @@ import com.liferay.pushnotifications.comparators.AppVersionComparator;
 import com.liferay.pushnotifications.comparators.ModelComparator;
 import com.liferay.pushnotifications.comparators.OSVersionComparator;
 import com.liferay.pushnotifications.comparators.PlatformComparator;
+
+/**
+ * @author Salva Tejero
+ */
 public class PushNotificationsDeviceComparatorUtil {
 
 	public static OrderByComparator getPushNotificationOrderByComparator(
@@ -34,11 +38,14 @@ public class PushNotificationsDeviceComparatorUtil {
 
 		if ("platform".equals(orderByCol)) {
 			orderByComparator = new PlatformComparator(orderByAsc);
-		}else if ("OSVersion".equals(orderByCol)) {
+		}
+		else if ("OSVersion".equals(orderByCol)) {
 			orderByComparator = new OSVersionComparator(orderByAsc);
-		}else if ("model".equals(orderByCol)) {
+		}
+		else if ("model".equals(orderByCol)) {
 			orderByComparator = new ModelComparator(orderByAsc);
-		}else if ("appVersion".equals(orderByCol)) {
+		}
+		else if ("appVersion".equals(orderByCol)) {
 			orderByComparator = new AppVersionComparator(orderByAsc);
 		}
 
