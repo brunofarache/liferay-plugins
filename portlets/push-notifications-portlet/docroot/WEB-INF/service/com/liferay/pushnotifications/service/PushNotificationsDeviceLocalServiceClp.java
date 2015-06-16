@@ -121,15 +121,15 @@ public class PushNotificationsDeviceLocalServiceClp
 
 		_methodParameterTypes17 = new String[] { "long" };
 
-		_methodName18 = "getPushNotificationsDeviceByComparator";
+		_methodName18 = "getPushNotificationsDevices";
 
-		_methodParameterTypes18 = new String[] {
-				"int", "int", "com.liferay.portal.kernel.util.OrderByComparator"
-			};
+		_methodParameterTypes18 = new String[] { "int", "int" };
 
 		_methodName19 = "getPushNotificationsDevices";
 
-		_methodParameterTypes19 = new String[] { "int", "int" };
+		_methodParameterTypes19 = new String[] {
+				"int", "int", "com.liferay.portal.kernel.util.OrderByComparator"
+			};
 
 		_methodName20 = "getPushNotificationsDevicesCount";
 
@@ -665,21 +665,13 @@ public class PushNotificationsDeviceLocalServiceClp
 	}
 
 	@Override
-	public java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDeviceByComparator(
-		int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator) {
+	public java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDevices(
+		int start, int end) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName18,
-					_methodParameterTypes18,
-					new Object[] {
-						start,
-						
-					end,
-						
-					ClpSerializer.translateInput(orderByComparator)
-					});
+					_methodParameterTypes18, new Object[] { start, end });
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);
@@ -698,12 +690,20 @@ public class PushNotificationsDeviceLocalServiceClp
 
 	@Override
 	public java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDevices(
-		int start, int end) {
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator) {
 		Object returnObj = null;
 
 		try {
 			returnObj = _invokableLocalService.invokeMethod(_methodName19,
-					_methodParameterTypes19, new Object[] { start, end });
+					_methodParameterTypes19,
+					new Object[] {
+						start,
+						
+					end,
+						
+					ClpSerializer.translateInput(orderByComparator)
+					});
 		}
 		catch (Throwable t) {
 			t = ClpSerializer.translateThrowable(t);

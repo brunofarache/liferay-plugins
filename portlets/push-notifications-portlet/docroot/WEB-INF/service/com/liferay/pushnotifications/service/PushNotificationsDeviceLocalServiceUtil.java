@@ -227,14 +227,6 @@ public class PushNotificationsDeviceLocalServiceUtil {
 		return getService().getPushNotificationsDevice(pushNotificationsDeviceId);
 	}
 
-	public static java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDeviceByComparator(
-		int start, int end,
-		com.liferay.portal.kernel.util.OrderByComparator orderByComparator) {
-		return getService()
-				   .getPushNotificationsDeviceByComparator(start, end,
-			orderByComparator);
-	}
-
 	/**
 	* Returns a range of all the push notifications devices.
 	*
@@ -249,6 +241,13 @@ public class PushNotificationsDeviceLocalServiceUtil {
 	public static java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDevices(
 		int start, int end) {
 		return getService().getPushNotificationsDevices(start, end);
+	}
+
+	public static java.util.List<com.liferay.pushnotifications.model.PushNotificationsDevice> getPushNotificationsDevices(
+		int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator) {
+		return getService()
+				   .getPushNotificationsDevices(start, end, orderByComparator);
 	}
 
 	/**

@@ -137,7 +137,7 @@ public class PushNotificationsDeviceLocalServiceClpInvoker {
 
 		_methodParameterTypes50 = new String[] { "java.lang.String" };
 
-		_methodName51 = "getPushNotificationsDeviceByComparator";
+		_methodName51 = "getPushNotificationsDevices";
 
 		_methodParameterTypes51 = new String[] {
 				"int", "int", "com.liferay.portal.kernel.util.OrderByComparator"
@@ -285,7 +285,7 @@ public class PushNotificationsDeviceLocalServiceClpInvoker {
 
 		if (_methodName51.equals(name) &&
 				Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
-			return PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(((Integer)arguments[0]).intValue(),
+			return PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevices(((Integer)arguments[0]).intValue(),
 				((Integer)arguments[1]).intValue(),
 				(com.liferay.portal.kernel.util.OrderByComparator)arguments[2]);
 		}
