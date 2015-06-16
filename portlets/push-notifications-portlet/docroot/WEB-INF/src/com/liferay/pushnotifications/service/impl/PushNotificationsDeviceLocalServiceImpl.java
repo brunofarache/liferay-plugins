@@ -70,7 +70,7 @@ public class PushNotificationsDeviceLocalServiceImpl
 		return pushNotificationsDevice;
 	}
 
-	public List<PushNotificationsDevice> getPushNotificationsDeviceByComparator(
+	public List<PushNotificationsDevice> getPushNotificationsDevices(
 		int start, int end, OrderByComparator orderByComparator) {
 
 		return pushNotificationsDevicePersistence.findAll(

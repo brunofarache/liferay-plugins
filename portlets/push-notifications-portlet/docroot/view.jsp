@@ -79,7 +79,7 @@ OrderByComparator orderByComparator = PushNotificationsUtil.getPushNotifications
 		>
 
 			<liferay-ui:search-container-results
-				results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDeviceByComparator(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>"
+				results="<%= PushNotificationsDeviceLocalServiceUtil.getPushNotificationsDevices(searchContainer.getStart(), searchContainer.getEnd(), orderByComparator) %>"
 			/>
 
 			<liferay-ui:search-container-row
