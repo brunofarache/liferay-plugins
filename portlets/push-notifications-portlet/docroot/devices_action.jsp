@@ -14,13 +14,7 @@
  */
 --%>
 
-<%@ page import="com.liferay.portal.kernel.dao.search.ResultRow" %>
-<%@ page import="com.liferay.portal.kernel.util.WebKeys" %>
-<%@ page import="com.liferay.portal.security.permission.ActionKeys" %>
-<%@ page import="com.liferay.portal.service.permission.UserPermissionUtil" %>
-<%@ page import="com.liferay.pushnotifications.model.PushNotificationsDevice" %>
-
-<%@ include file="init.jsp" %>
+<%@ include file="/init.jsp" %>
 
 <%
 ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
