@@ -69,7 +69,7 @@ portletURL.setParameter("tabs1", tabs1);
 		</aui:form>
 	</liferay-ui:section>
 	<liferay-ui:section>
-		<liferay-ui:success key="device-deleted-successfully" message="device-deleted-successfully"/>
+		<liferay-ui:success key="deviceDeletedSuccessfully" message="device-deleted-successfully" />
 
 		<div class="alert alert-danger hide" id="<portlet:namespace />error">
 			<p><liferay-ui:message key="device-could-not-be-deleted" /></p>

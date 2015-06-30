@@ -40,7 +40,7 @@ public class AdminPortlet extends MVCPortlet {
 			long pushNotificationDeviceId = ParamUtil.getLong(actionRequest, "pushNotificationDeviceId");
 			PushNotificationsDeviceLocalServiceUtil.deletePushNotificationsDevice(
 					pushNotificationDeviceId);
-			SessionMessages.add(actionRequest, "device-deleted-successfully");
+			SessionMessages.add(actionRequest, "deviceDeletedSuccessfully");
 		} catch (PortalException e) {
 			SessionErrors.add(actionRequest, "error");
 		}
