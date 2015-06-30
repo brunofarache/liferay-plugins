@@ -19,10 +19,10 @@
 <%
 ResultRow row = (ResultRow)request.getAttribute(WebKeys.SEARCH_CONTAINER_RESULT_ROW);
 
-PushNotificationsDevice pushObject = (PushNotificationsDevice)row.getObject();
+PushNotificationsDevice pushNotificationDevice = (PushNotificationsDevice)row.getObject();
 
-long pushid = pushObject.getPushNotificationsDeviceId();
-long userId = pushObject.getUserId();
+long pushNotificationDeviceId = pushNotificationDevice.getPushNotificationsDeviceId();
+long userId = pushNotificationDevice.getUserId();
 %>
 
 <liferay-ui:icon-menu>
@@ -30,7 +30,7 @@ long userId = pushObject.getUserId();
 	<c:if test="<%= UserPermissionUtil.contains(permissionChecker, userId, ActionKeys.DELETE) %>">
 
 		<liferay-portlet:actionURL name="deleteDevice" var="deleteDeviceUrl">
-			<portlet:param name="pushId" value="<%= String.valueOf(pushid) %>" />
+			<portlet:param name="pushNotificationDeviceId" value="<%= String.valueOf(pushNotificationDeviceId) %>" />
 			<portlet:param name="currentTab" value="devices" />
 		</liferay-portlet:actionURL>
 

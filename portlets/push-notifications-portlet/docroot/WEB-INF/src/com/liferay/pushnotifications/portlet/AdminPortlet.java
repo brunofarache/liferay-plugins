@@ -34,7 +34,7 @@ public class AdminPortlet extends MVCPortlet {
 			ActionRequest actionRequest, ActionResponse actionResponse)
 		throws Exception {
 
-		long pushid = ParamUtil.getLong(actionRequest, "pushId");
+		long pushid = ParamUtil.getLong(actionRequest, "pushNotificationDeviceId");
 		PushNotificationsDeviceLocalServiceUtil.deletePushNotificationsDevice(
 			pushid);
 		SessionMessages.add(actionRequest, "success");
