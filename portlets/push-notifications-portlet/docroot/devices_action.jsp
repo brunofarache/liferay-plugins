@@ -31,7 +31,7 @@ long userId = pushNotificationDevice.getUserId();
 
 		<liferay-portlet:actionURL name="deleteDevice" var="deleteDeviceUrl">
 			<portlet:param name="pushNotificationDeviceId" value="<%= String.valueOf(pushNotificationDeviceId) %>" />
-			<portlet:param name="currentTab" value="devices" />
+			<portlet:param name="tabs1" value="devices" />
 		</liferay-portlet:actionURL>
 
 		<liferay-ui:icon-delete confirmation="are-you-sure-you-want-to-delete-the-device" url="<%= deleteDeviceUrl %>"  />
