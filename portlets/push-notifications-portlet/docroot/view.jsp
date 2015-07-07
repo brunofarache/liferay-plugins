@@ -109,15 +109,6 @@ portletURL.setParameter("tabs1", tabs1);
 		</liferay-ui:search-container>
 	</liferay-ui:section>
 	<liferay-ui:section>
-		<aui:form name="fm">
-			<aui:input label="message" name="message" rows="6" type="textarea" />
-
-			<aui:button type="submit" value="send" />
-
-			<aui:button type="reset" value="reset" />
-		</aui:form>
-
-		<br />
 
 		<div class="alert alert-success hide" id="<portlet:namespace />success">
 			<p><liferay-ui:message key="the-push-notification-was-sent-successfully" /></p>
@@ -126,9 +117,18 @@ portletURL.setParameter("tabs1", tabs1);
 		<div class="alert alert-danger hide" id="<portlet:namespace />error">
 			<p></p>
 		</div>
+
 		<div class="alert alert-info">
 			<liferay-ui:message key="be-aware-that-you-will-send-a-notification-to-all-registered-users"/>
 		</div>
+
+		<aui:form name="fm">
+			<aui:input label="message" name="message" rows="6" type="textarea" />
+
+			<aui:button type="submit" value="send" />
+
+			<aui:button type="reset" value="reset" />
+		</aui:form>
 	</liferay-ui:section>
 </liferay-ui:tabs>
 
