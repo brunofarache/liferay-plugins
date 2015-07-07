@@ -124,6 +124,9 @@ portletURL.setParameter("tabs1", tabs1);
 		<div class="alert alert-danger hide" id="<portlet:namespace />error">
 			<p></p>
 		</div>
+		<div class="alert alert-info">
+			<liferay-ui:message key="be-aware-that-you-will-send-a-notification-to-all-registered-users"/>
+		</div>
 	</liferay-ui:section>
 </liferay-ui:tabs>
 
