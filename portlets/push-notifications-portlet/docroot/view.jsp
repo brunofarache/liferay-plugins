@@ -43,6 +43,8 @@ portletURL.setParameter("tabs1", tabs1);
 	url="<%= portletURL.toString() %>"
 >
 	<liferay-ui:section>
+		<liferay-ui:success key="pushNotificationsStoredPreferences" message="preferences-stored-successfully"/>
+
 		<aui:form action="<%= updatePortletPreferencesURL %>" method="post" name="configurationFm">
 			<aui:fieldset label="android">
 				<aui:input helpMessage="android-api-key-help" label="android-api-key" name="androidApiKey" type="text" value="<%= androidApiKey %>" wrapperCssClass="lfr-input-text-container" />

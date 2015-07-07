@@ -93,6 +93,8 @@ public class AdminPortlet extends MVCPortlet {
 		portletPreferences.store();
 
 		PushNotificationsDeviceLocalServiceUtil.resetPushNotificationSenders();
+
+		SessionMessages.add(actionRequest, "pushNotificationsStoredPreferences");
 	}
 
 }
